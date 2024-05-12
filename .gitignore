@@ -1,0 +1,17 @@
+.env
+.env.*
+
+.venv/
+venv/
+
+private/
+storage/
+data/
+.cache/
+
+wandb/
+
+model-*/
+output-*/
+
+.DS_Store
