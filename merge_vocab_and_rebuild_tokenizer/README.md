@@ -99,22 +99,23 @@ df_dedup = df.drop_duplicates(subset="token", keep='first')
 ```
 - 最終的な語彙は.vocabという拡張子で保存しておく。
 
-# 語彙からスコアを再推定する
-## git clone
+# トークナイザーの作成
+## スコアの再推定
+### git clone
 - [llm-jp-tokenizer](https://github.com/llm-jp/llm-jp-tokenizer/tree/main)のスクリプトを取得。
 ```shell
 git clone git@github.com:llm-jp/llm-jp-tokenizer.git
 ```
-## 準備
-### スコア再推定用のテキストファイルを格納
+### 準備
+#### スコア再推定用のテキストファイルを格納
 - 日本語の事前処理は無しで、各言語を全て統合したテキストファイルをdataディレクトリへ格納する。
 - このテキストをもとにUnigramスコアを再推定する。
 
-### vocabの格納
+#### vocabの格納
 - 上で最終的な語彙として作成したvocabファイルをmodelディレクトリに格納する。
 - このvocabにあるトークンにスコアづけがされる。
 
-## 実行
+### 実行
 - SentencePieceをインストール。
 ```shell
 pip install sentencepiece==0.1.99
@@ -176,7 +177,7 @@ spm.SentencePieceTrainer.train( # SentencePieceのトレーナーを作成
     )
 ```
 
-# スコア再推定後の語彙からトークナイザーを作成
+## スコア再推定後の語彙からトークナイザーを作成
 ```shell
 python scripts/vocab2model.py \ 
     --vocab models/ucllm/sample.vocab.reestimated.postproc \
