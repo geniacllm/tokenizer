@@ -61,7 +61,8 @@ df_dedup = df.drop_duplicates(subset="token", keep='first')
 ### 語彙数調整
 - 56,320の語彙になるようにスコアの低い語彙を削除する。
 - ※事前学習ライブラリの処理の中で、語彙サイズが128の倍数でない場合にダミートークンを追加して128の倍数になるような処理が入っていたことから、初めから128の倍数として設定しておくこととした。（56,320）
-- 以下の特殊トークンや連続の空白などを追加することも考慮して最終的な語彙数を調整していく。（参考：[llm-jp-tokneizer](https://github.com/llm-jp/llm-jp-tokenizer/blob/main/scripts/howToCreateModel_ver2.md#%E8%AA%9E%E5%BD%99%E3%81%AE%E3%83%9E%E3%83%BC%E3%82%B8)
+- 以下の特殊トークンや連続の空白などを追加することも考慮して最終的な語彙数を調整していく。（参考：[llm-jp-tokneizer](https://github.com/llm-jp/llm-jp-tokenizer/blob/main/scripts/howToCreateModel_ver2.md#%E8%AA%9E%E5%BD%99%E3%81%AE%E3%83%9E%E3%83%BC%E3%82%B8)）
+- 最終的な語彙は.vocabという拡張子で保存しておく。
 ```shell
 <unk>
 <s>
@@ -97,7 +98,6 @@ df_dedup = df.drop_duplicates(subset="token", keep='first')
 ▁▁
 ▁
 ```
-- 最終的な語彙は.vocabという拡張子で保存しておく。
 
 # トークナイザーの作成
 ## スコアの再推定
@@ -178,6 +178,7 @@ spm.SentencePieceTrainer.train( # SentencePieceのトレーナーを作成
 ```
 
 ## スコア再推定後の語彙からトークナイザーを作成
+- スコアを再推定した語彙とダミーのベースモデルを使って、最終的なトークナイザーモデルを作成。
 ```shell
 python scripts/vocab2model.py \ 
     --vocab models/ucllm/sample.vocab.reestimated.postproc \

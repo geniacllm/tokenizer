@@ -30,7 +30,7 @@ def main() -> None:
     # Converts the tokenizer from SentencePiece format to HuggingFace Transformers format by loading with `T5Tokenizer`.
     # Note: `PreTrainedTokenizerFast` (base class) doesn't support byte fallback, but `T5Tokenizer` (derived class) supports byte fallback
     # https://zenn.dev/selllous/articles/transformers_pretrain_to_ft#tokenizers-t5tokenizer%E5%BD%A2%E5%BC%8F%E3%81%B8%E3%81%AE%E5%A4%89%E6%8F%9B
-    output_tokenizer = LlamaTokenizer( # LlamaTokenizeを指定
+    output_tokenizer = LlamaTokenizer( # LlamaTokenizerを指定
         vocab_file=args.input_tokenizer_file,
         bos_token=BOS_TOKEN,
         eos_token=EOS_TOKEN,

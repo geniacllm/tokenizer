@@ -1,5 +1,6 @@
 # SentencePieceモデルからLlamaTokenizer形式への変換
-- 松尾研標準コードを転用。（参考：https://github.com/matsuolab/ucllm_nedo_prod/blob/main/train/scripts/step3_upload_pretrained_model/convert_tokenizer_from_sentencepiece_to_huggingface_transformers.py）
+## 参考：松尾研標準コード
+- https://github.com/matsuolab/ucllm_nedo_prod/blob/main/train/scripts/step3_upload_pretrained_model/convert_tokenizer_from_sentencepiece_to_huggingface_transformers.py
 
 ## 準備
 - スコア再推定後のSentencePieceモデルを適当なディレクトリに置いておく。

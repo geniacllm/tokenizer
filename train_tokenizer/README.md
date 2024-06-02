@@ -1,8 +1,8 @@
-# 参考：松尾研標準コード
+# トークナイザー学習
+## 参考：松尾研標準コード
 - https://github.com/matsuolab/ucllm_nedo_prod/tree/main/train/scripts/step1_train_tokenizer
 - requirement.txtも転用。（トークナイザーの学習のみであれば不要なものも含まれている。）
 
-# トークナイザー学習
 ## ライブラリインストール
 ```shell
 pip install -r requirements.txt
