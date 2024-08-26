@@ -44,7 +44,7 @@ def main() -> None:
         ],  # Note: `NEWLINE_TOKEN` is NOT needed in `additional_special_tokens`.
         extra_ids=0,
         # model_max_length=2048,  # TODO: Remove hard coding and/or magic number.
-        split_special_tokens=True,
+        split_special_tokens=False, # modify 20240826
     )
 
     os.makedirs(args.output_tokenizer_dir, exist_ok=True)
